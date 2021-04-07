@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <link href="../common/css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="../common/css/main.css" rel="stylesheet" type="text/css">
+  
+</head><div class="body2"><br><div class="body3">
+<body>
+  <h1>ぱん屋のぱん</h1>
+
+
+	<img src="../photo/bread2.jpeg" id="slideshow">
+	<input type="button" value="<" id="next">
+	<input type="button" value=">" id="back">
+	<script src = "../common/javasqript/index.js"></script>
+	
+
+	<?php if($loginOk === true){ ?>
+	<p5><div>いらっしゃいませ。 <?= $userName ?> 様</div></p5>
+	<?php } ?>
+
+	<?php if ($loginOk === true){ ?>
+	<div>
+		<p2><a href="cart.php">カート（<p6><?php print $cartCnt; ?></p6>件）</a></p2>
+		<p3><a href="logout.php">ログアウト</a></p3>
+	</div>
+	<?php } else { ?>
+	<div>
+		<p2><a href="login.php">ログイン</a></p2>
+		<p3><a href="insert.php">新規会員登録</a></p3>
+	</div>
+	<?php } ?>
+
+	<p1><a href="index1.php">ぱんはこちら</a></p1>
+
+    <div id="calender"></div>
+	<script src = "../common/javascript/index.js"></script>
+
+
+	<?php if($loginOk === false){ ?>
+		<p4><a href="adminlogin.php">管理者ページ</a></p4>
+	<?php } ?>
+	<p4><a href="help.php">ヘルプ</a></p4>
+<br />
+<br />
+</body></div></div>
+</html>

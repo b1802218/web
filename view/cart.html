@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <link href="../common/css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="../common/css/main.css" rel="stylesheet" type="text/css">
+</head><div class="body2"><br><div class="body3">
+<body>
+	<img src="../photo/bread5.jpeg" width="670" height="450">
+  <h1>カート</h1>
+	<?php if($loginOk === true){ ?>
+		<p5><div>いらっしゃいませ。 <?= $userName ?> 様</div></p5>
+	<?php } ?>
+	<div>
+		<p1><a href="index1.php">商品一覧へ</a></p1>
+		<p3><a href="logout.php">ログアウト</a></p3>
+	</div>
+	<h2>カート</h2>
+	<?php if(count($arrCart) > 0){ ?>
+	<table class="resultTbl">
+	<tr>
+		<th>画像</th>
+		<th>商品名</th>
+		<th>価格</th>
+		<th>数量</th>
+		<th>小計</th>
+	</tr>
+	<?php foreach ($arrCart as $data){ ?>
+	<tr>
+		<td><img src="../photo/<?php print $data['item_id'] ?>.png" style="width:40px;"></td>
+		<td><?php print $data['item_name']; ?></td>
+		<td><?php print number_format($data['item_price']); ?>円</td>
+		<td>
+			<form action="cart.php" method="post">
+				<select name="item_num">
+
+				<?php for ($i = 0; $i < $data['item_stock']; $i++){ ?>
+				<option value="<?php print $i; ?>" <?php if ($i == $data['item_num']){ ?>selected<?php } ?>><?php print $i; ?></option>
+				<?php } ?>
+
+				<?php if ($data['item_stock'] < $data['item_num']){ ?>
+				<option value="<?php print $data['item_num'] ?>" selected><?php print $data['item_num']; ?></option>
+				<?php } ?>
+
+				</select>
+				<input type="hidden" name="item_id" value="<?php print $data['item_id']; ?>">
+				<input type="submit" value="数量変更">
+			</form>
+			<?php if ($data['item_id'] == $nItemId){ ?>
+			<div style="color:red">
+				<?php print $resultMsg ?>
+			</div>
+			<?php } ?>
+		</td>
+		<td><?php print number_format($data['item_price'] * $data['item_num']); ?>円</td>
+	</tr>
+	<?php } ?>
+	<tr>
+		<th colspan="4">合計金額（税抜き）</th>
+		<td><?php print number_format($nTotalPrice) ?>円</td>
+	</tr>
+	<tr>
+		<th colspan="4">合計金額（税込み）</th>
+		<td><?php print number_format($nTotalPrice2) ?>円</td>
+	</tr>
+	</table>
+
+	
+	<div class="btnArea">
+	<form action="order.php" method="post">
+		<input type="submit" value="購入確認">
+	</form>
+	</div>
+
+	<?php } else { ?>
+		カートは空っぽです。
+	<?php } ?>
+
+	<br />
+	<br />
+	<div>
+		<p2><a href="index.php">トップへ戻る</a></p2>
+	</div>
+	
+	<br />
+	<br />
+</body></div></div>
+</html>

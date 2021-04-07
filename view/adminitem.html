@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <link href="../common/css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="../common/css/main.css" rel="stylesheet" type="text/css">
+</head><div class="body2"><br><div class="body3">
+	<body>
+    <h2>商品検索</h2>
+	<form action="adminitem.php" method="post">
+	<table class="searchTbl">
+		<tr>
+			<th>商品名</th>
+			<td><input type="text" name="keyword" value="<?= $sKeyword ?>" /></td>
+		</tr>
+		<tr>
+			<th>カテゴリ</th>
+			<td>
+				<select name="category_id">
+				<option value=""></option>
+				<?php foreach ($arrCategory as $arr){ ?>
+				<option value="<?php print $arr['category_id']; ?>" <?php if($arr['category_id'] == $nCateId){ print "selected"; } ?>><?php print $arr['category_name']; ?></option>
+				<?php } ?>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<th>金額</th>
+			<td><input type="text" name="keyword2" value="<?= $nKeyword2 ?>" />~<input type="text" name="keyword4" value="<?= $nKeyword4 ?>" /></td>
+		</tr>
+		<tr>
+			<th>販売有無</th>
+			<td><input type="checkbox" name="keyword3" value="<?= 0 ?>" />販売中
+				<input type="checkbox" name="keyword3" value="<?= 1 ?>" />販売停止中
+			</td>
+		</tr>
+
+	</table>
+	<div class="btnArea">
+		<input type="submit" value="検索" />
+	</div>
+	</form>
+	<br />
+    
+
+	<h2>商品一覧</h2>
+	<table class="resultTbl">
+	<tr>
+		<th>画像</th>
+		<th>商品名</th>
+		<th>カテゴリ</th>
+		<th>価格</th>
+        <th>詳細</th>
+		<th>在庫</th>
+		<th>販売停止</th>
+		<th></th>
+		<th></th>
+
+	</tr>
+	<?php foreach ($arrItem as $data){ ?>
+	<tr>
+		<td><img src="../photo/<?php print $data['item_id']; ?>.png" style="width:40px;"></td>
+		<td><?php print $data['item_name']; ?></td>
+		<td><?php print $data['category_name']; ?></td>
+        <td><?php print number_format($data['item_price']); ?>円</td>
+        <td><?php print $data['item_exp']; ?></td>
+		<td><?php print $data['item_stock']; ?></td>
+		<td><?php if ( $data['flag'] == 0 ){ ?> 販売中 <?php }else { ?> 販売停止 <?php } ?>
+	
+		</td>
+		<td>
+            <form action="adminext.php" method="GET">
+                <input type="hidden" name="item_id" value="<?= $data['item_id']; ?>">
+                <input type="submit" value="編集">
+            </form> 
+
+            </td>
+        <td>
+
+            <form action="admindelete.php" method="POST">
+                <input type="hidden" name="item_id" value="<?php print $data['item_id']; ?>">
+                <input type="submit" value="削除">
+            </form>
+
+			</td>
+
+		<?php } ?>
+	</tr>
+    </table>
+    
+    <a href="iteminsert.php">商品追加</a>
+    <br /><br />
+
+   
+    <a href="admin.php">トップページへ戻る</a><br />
+    
+</body></div></div>
+</html>

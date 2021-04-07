@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+    <meta charset="utf-8">
+    <link href="../common/css/normalize.css" rel="stylesheet" type="text/css">
+    <link href="../common/css/main.css" rel="stylesheet" type="text/css">
+</head><div class="body2"><br><div class="body3">
+    <body>
+
+    <h2>商品登録</h2>
+
+    <form action="iteminsert.php" method="post">
+      
+        <table class="searchTbl">
+            <tr>
+                <th>商品ID</th>
+                <td>
+                    <?= $nItemId ?>
+                    <input type="hidden" name="item_id" value="<?= $nItemId ?>">
+                </td>
+            </tr>
+            <tr>
+                <th>商品名</th>
+                <td>
+                    <?= $nItemName ?>
+                    <input type="hidden" name="item_name" value="<?= $nItemName ?>">
+                </td>
+            </tr>
+			<tr>
+                <th>商品詳細</th>
+                <td>
+                    <?= $nItemexp ?>
+                    <input type="hidden" name="item_exp" value="<?= $nItemexp ?>">
+                </td>
+            </tr>
+            <tr>
+                <th>金額</th>
+                <td>
+                    <?= $nItemPrice ?>
+                    <input type="hidden" name="item_price" value="<?= $nItemPrice ?>">
+                </td>
+            </tr>
+            <tr>
+                <th>数量</th>
+                <td>
+                    <?= $nItemNum ?>
+                    <input type="hidden" name="item_stock" value="<?= $nItemNum ?>">
+                </td>
+            </tr>
+            <tr>
+                <th>カテゴリ</th>
+                <td>
+                    <?= $nCategoryId ?>
+                    <input type="hidden" name="category_id" value="<?= $nCategoryId ?>">
+                </td>
+            </tr>
+			
+        </table>
+
+        <div class="btnArea clearfix">
+            <input type="button" class="btn" value="修正" onclick="javascript:history.back();">
+            <input type="submit" class="btn" value="登録">
+            <input type="hidden" name="step" value="2" />
+        </div>
+    </form>
+    <br />
+    <a href="admin.php">トップページへ戻る</a><br />
+<br />
+</body></div></div>
+</html>

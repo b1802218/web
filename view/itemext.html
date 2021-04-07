@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <link href="../common/css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="../common/css/main.css" rel="stylesheet" type="text/css">
+</head><div class="body2"><br><div class="body3">
+<body>
+	
+	<img src="../photo/bread8.jpeg" width="670" height="450">
+	<h1>詳細</h1>	
+	<?php if($loginOk === true){ ?>
+	<p1><a href="cart.php">カート（<p6><?php print $cartCnt; ?></p6>件）</a></p1>
+		<?php } ?>
+
+
+	<h2>商品詳細</h2>
+	<div style=text-align:center;>
+	<?php foreach ($arrItem as $data){ ?>
+	<tr>
+
+
+		<img src="../photo/<?php print $data['item_id']; ?>.png" style="width:300px;"><br />
+
+		<div style=font-size:30px;><td><?php print $data['item_name']; ?></td></div><br />
+
+		<td><?php print $data['item_exp']; ?></td><br />
+		<br />
+		<hr>
+		<br />
+		<th>価格 : </th>
+		<td><?php print number_format($data['item_price']); ?>円</td><br />
+		<br />
+		<hr>
+		<br />
+		<?php if ($loginOk === true){ ?>
+		<td>
+			<form action="itemext.php ?item_id=<?php print $data['item_id']; ?>" method="POST">
+
+				購入個数 : <select name="item_num">
+				<?php for ($i = 1; $i < $data['item_stock']; $i++){ ?>
+				<option value="<?php print $i; ?>"><?php print $i; ?></option>
+				<?php } ?>
+				</select>
+				<br>
+				<hr>
+				<br>
+				<?php if ($data['flag'] == 0){ ?>
+				<input type="hidden" name="item_id" value="<?php print $data['item_id']; ?>">
+				<input type="submit" value="カートへ入れる">
+				<?php } ?>
+				<?php if ($resultMsg != ""){ ?>
+					<div style="color:red">
+						<?php print $resultMsg; ?>
+					</div>
+				<?php } ?>
+
+			</form>
+
+		</td>
+		<?php } ?>
+	</tr>
+	<?php } ?>
+</div>
+
+	<br />
+	<p2><a href="index1.php">商品一覧へ戻る</a></p2>
+	<p3><a href="index.php">トップへ戻る</a></p3>
+	<br />
+	<br />
+
+</body></div></div>
+</html>

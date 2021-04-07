@@ -1,0 +1,151 @@
+/*----------------------------------------------------
+ INITIALIZE
+----------------------------------------------------*/
+
+/*** BODY **************************/
+body {
+	background-color: rgb(209, 207, 174);
+	font-family: "Yu Gothic";
+	
+}
+.body2{
+	width:85%;
+	margin:0 auto;
+	background-color:#ffffff;
+	
+}
+.body3{
+	margin:0px 0px 0px 90px;
+	width:80%;
+	position: relative;
+}
+
+
+/*** HN ****************************/
+h1 {
+	position: absolute;/*絶対配置*/
+	color: black;/*文字は白に*/
+	top: 30px;
+	left: 20px;
+	writing-mode: vertical-rl;
+	background-color: white ;
+	font-size:28px;
+	padding:30px 20px;
+	margin-bottom:20px;
+	
+}
+h2 {
+	font-size:20px;
+	padding:5px 0px 5px 15px;
+	border-left:10px solid #AAAAAA;
+	border-bottom:1px solid #000000;
+}
+
+
+/*index.html*/
+.body3 p1{
+	position: absolute;/*絶対配置*/
+	color: black;/*文字は白に*/
+	top: 100px;
+	left: 500px;
+	writing-mode: vertical-rl;
+	background-color: white ;
+	font-size:15px;
+	padding:10px 10px;
+	margin-bottom:20px;
+}
+.body3 p2{
+	position: absolute;/*絶対配置*/
+	color: black;/*文字は白に*/
+	top: 100px;
+	left: 550px;
+	writing-mode: vertical-rl;
+	background-color: white ;
+	font-size:15px;
+	padding:10px 10px;
+	margin-bottom:20px;
+}
+.body3 p3{
+	position: absolute;/*絶対配置*/
+	color: black;/*文字は白に*/
+	top: 100px;
+	left: 600px;
+	writing-mode: vertical-rl;
+	background-color: white ;
+	font-size:15px;
+	padding:10px 10px;
+	margin-bottom:20px;
+}
+.body3 p4{
+	font-size:8px;
+}
+.body3 p5{
+	position: absolute;/*絶対配置*/
+	color: black;/*文字は白に*/
+	top: 100px;
+	left: 105px;
+	writing-mode: vertical-rl;
+	background-color: white ;
+	font-size:18px;
+	padding:10px 10px;
+	margin-bottom:20px;
+}
+.body3 p6{
+	-webkit-text-combine: horizontal;
+	-ms-text-combine-horizontal: all;
+	text-combine-upright: all;
+}
+
+
+
+/*** TABLE A *************************/
+table.searchTbl {
+	width : 700px;
+	margin:0 0 10px 30px;
+	text-align:left;
+}
+table.searchTbl th {
+	width : 150px;
+	padding:5px;
+}
+table.searchTbl td {
+	line-height:20px;
+	padding:5px;
+}
+
+/*** TABLE B *************************/
+table.resultTbl{
+	width : 650px;
+	margin:0 0 10px 20px;
+}
+table.resultTbl th {
+	text-align:center;
+	border:1px solid #AAAAAA;
+	background-color:#DDDDDD;
+}
+table.resultTbl td {
+	padding:5px;
+	border:1px solid #AAAAAA;
+}
+table.resultTbl td.btn {
+	text-align:center;
+	background-color:#FAFAFA;
+}
+
+/*** OTHER *************************/
+.errMsg{
+	width:490px;
+	margin:10px 0px;
+	padding:10px;
+	color:red;
+	border:2px solid #FF0000;
+}
+.btnArea{
+	width:200px;
+	margin:0 0 10px 30px;
+}
+span.err{color: red;}
+
+.notice {
+	color: red;
+}

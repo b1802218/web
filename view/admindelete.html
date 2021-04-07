@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+    <meta charset="utf-8">
+    <link href="../common/css/normalize.css" rel="stylesheet" type="text/css">
+    <link href="../common/css/main.css" rel="stylesheet" type="text/css">
+</head><div class="body2"><br><div class="body3">
+<body>
+    <h2>商品削除</h2>
+
+    <form action="admindelete.php" method="post">
+      
+        <table class="resultTbl">
+            <tr>
+                <th>画像</th>
+                <th>商品名</th>
+                <th>カテゴリ</th>
+                <th>価格</th>
+                <th>詳細</th>
+                <th>在庫</th>
+                <th></th>
+            </tr>
+           <?php foreach ($arrItem as $data){ ?>
+            <tr>
+                <td><img src="../photo/<?php print $data['item_id']; ?>.png" style="width:40px;"></td>
+                <td><?php print $data['item_name']; ?></td>
+                <td><?php print $data['category_name']; ?></td>
+                <td><?php print number_format($data['item_price']); ?>円</td>
+                <td><?php print $data['item_exp']; ?></td>
+                <td><?php print $data['item_stock']; ?></td>
+                <?php } ?>
+            </tr>
+            </table>
+
+        <div class="btnArea clearfix">
+            <input type="button" class="btn" value="中止" onclick="javascript:history.back();">
+            <input type="submit" class="btn" value="削除">
+            <input type="hidden" name="step" value="1" />
+            <input type="hidden" name="item_id" value="<?php print $data['item_id']; ?>" />
+        </div>
+    </form>
+
+    <br />
+    <a href="adminitem.php">商品管理へ戻る</a><br />
+    <a href="admin.php">トップページへ戻る</a><br />
+
+    <br />
+    <br />
+    <br />
+</body></div></div>
+</html>

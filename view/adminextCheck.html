@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+    <meta charset="utf-8">
+    <link href="../common/css/normalize.css" rel="stylesheet" type="text/css">
+    <link href="../common/css/main.css" rel="stylesheet" type="text/css">
+</head><div class="body2"><br><div class="body3">
+	<body>
+    
+    <h2>商品編集確認</h2>
+
+    <form action="adminext.php" method="post">
+      
+        <table class="searchTbl">
+            <tr>
+                <th>商品名</th>
+                <td>
+                    <?= $nItemName ?>
+                    <input type="hidden" name="item_name" value="<?= $nItemName ?>">
+                </td>
+            </tr>
+			<tr>
+                <th>商品詳細</th>
+                <td>
+                    <?= $nItemexp ?>
+                    <input type="hidden" name="item_exp" value="<?= $nItemexp ?>">
+                </td>
+            </tr>
+            <tr>
+                <th>金額</th>
+                <td>
+                    <?= $nItemPrice ?>
+                    <input type="hidden" name="item_price" value="<?= $nItemPrice ?>">
+                </td>
+            </tr>
+            <tr>
+                <th>数量</th>
+                <td>
+                    <?= $nItemNum ?>
+                    <input type="hidden" name="item_stock" value="<?= $nItemNum ?>">
+                </td>
+            </tr>
+            <tr>
+                <th>カテゴリ</th>
+                <td>
+                    <?php if($nCategoryId == 1){ ?> 菓子パン <?php } else if($nCategoryId == 2){ ?> 総菜パン <?php }else{ ?> 主食パン <?php } ?>
+                    <input type="hidden" name="category_id" value="<?= $nCategoryId ?>">
+                </td>
+            </tr>
+            <tr>
+                <th>販売停止</th>
+                <td>
+                    <?php if($nflag == 0){ ?> 販売する <?php }else{ ?> 販売停止 <?php } ?>
+                    <input type="hidden" name="flag" value="<?= $nflag ?>">
+                </td>
+            </tr>
+			
+        </table>
+
+        <div class="btnArea clearfix">
+
+            <input type="button" class="btn" value="修正" onclick="javascript:history.back();">
+            <input type="submit" class="btn" value="登録">
+            <input type="hidden" name="step" value="2" />
+            <input type="hidden" name="item_id" value="<?= $nItemId ?>">
+
+        </div>
+        </form>
+    <a href="adminitem.php">商品管理へ戻る</a><br />
+    <a href="admin.php">トップページへ戻る</a><br />
+
+    <br />
+    <br />
+    <br />
+
+</body></div></div>
+</html>

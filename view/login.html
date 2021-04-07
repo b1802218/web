@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+  <meta charset="utf-8">
+ <link href="../common/css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="../common/css/main.css" rel="stylesheet" type="text/css">
+</head><div class="body2"><br><div class="body3">
+<body>
+    <img src="../photo/bread4.jpeg" width="670" height="450">
+  <h1>ログインページ</h1>
+  <form action="login.php" method="post">
+
+    <table class="searchTbl">
+        <tr>
+            <th>ログインID</th>
+            <td>
+                <input type="text" size="40" name="email" value=""><br />
+                <span class="err"><?= isset($arrErr['email']) ? $arrErr['email'] : "" ?></span>
+            </td>
+        </tr>
+        <tr>
+            <th>パスワード</th>
+            <td>
+                <input type="password" size="40" name="login_pass" value=""><br />
+                <span class="err"><?= isset($arrErr['login_pass']) ? $arrErr['login_pass'] : "" ?></span>
+            </td>
+        </tr>
+    </table>
+   
+    <span class="err"><?= isset($arrErr['common']) ? $arrErr['common'] : "" ?></span>
+
+    <div class="btnArea">
+        <input type="submit" value="ログイン">
+        <input type="hidden" name="step" value="1" />
+    </div>
+
+</form>
+
+<br />
+<br />
+<p3><a href="index.php">トップへ戻る</a></p3>
+</body></div></div>
+</html>

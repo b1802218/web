@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <link href="../common/css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="../common/css/main.css" rel="stylesheet" type="text/css">
+</head><div class="body2"><br><div class="body3">
+<body>
+    <img src="../photo/bread3.jpeg" width="670" height="450">
+  <h1>商品一覧</h1>
+	<?php if($loginOk === true){ ?>
+	<p5><div>いらっしゃいませ。 <?= $userName ?> 様</div></p5>
+	<?php } ?>
+
+	<?php if ($loginOk === true){ ?>
+	<div>
+		<p1><a href="cart.php">カート（<p6><?php print $cartCnt; ?></p6>件）</a></p1>
+		<p3><a href="logout.php">ログアウト</a></p3>
+	</div>
+	<?php } else { ?>
+	<div>
+		<p1><a href="login.php">ログイン</a></p1>
+		<p2><a href="insert.php">新規会員登録</a></p2>
+	</div>
+	<?php } ?>
+
+	<h2>検索条件</h2>
+	<form action="index.php" method="post">
+	<table class="searchTbl">
+		<tr>
+			<th>商品名</th>
+			<td><input type="text"  name="keyword" value="<?= $sKeyword ?>" /></td>
+		</tr>
+		<tr>
+			<th>カテゴリ</th>
+			<td>
+				<select name="category_id">
+				<option value=""></option>
+				<?php foreach ($arrCategory as $arr){ ?>
+				<option value="<?php print $arr['category_id']; ?>" <?php if($arr['category_id'] == $nCateId){ print "selected"; } ?>><?php print $arr['category_name']; ?></option>
+				<?php } ?>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<th>金額</th>
+			<td><input type="text" name="keyword2" value="<?= $nKeyword2 ?>" />~<input type="text" name="keyword3" value="<?= $nKeyword3 ?>" /></td>
+		</tr>
+		
+	</table>
+	<div class="btnArea">
+		<input type="submit" value="検索" />
+	</div>
+	</form>
+	<br />
+
+	<h2>商品一覧</h2>
+	<table class="resultTbl">
+	<tr>
+		<th>画像</th>
+		<th>商品名</th>
+		<th>カテゴリ</th>
+		<th>価格</th>
+		<th>詳細</th>
+		
+	</tr>
+	<?php foreach ($arrItem as $data){ ?>
+	<tr>
+		<td><img src="../photo/<?php print $data['item_id']; ?>.png" style="width:40px;"></td>
+		<td><?php print $data['item_name']; ?></td>
+		<td><?php print $data['category_name']; ?></td>
+		<td><?php print number_format($data['item_price']); ?>円</td>
+
+		<td>
+			<form action="itemext.php" method="GET">
+				<input type="hidden" name="item_id" value="<?php print $data['item_id']; ?>">
+				<input type="submit" value="詳細">
+			</form>
+		</td>
+
+	</tr>
+	<?php } ?>
+    </table>
+    <p3><a href="index.php">トップに戻る</a></p3>
+	
+<br />
+<br />
+</body></div></div>
+</html>
